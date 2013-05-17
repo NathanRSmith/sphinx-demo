@@ -1,0 +1,2 @@
+recursive-include sphinx_demo/templates *
+recursive-include sphinx_demo/static *
