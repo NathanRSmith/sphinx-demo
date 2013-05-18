@@ -12,8 +12,8 @@ urlpatterns = patterns('',
     # url(r'^$', 'demo.views.home', name='home'),
     # url(r'^demo/', include('demo.foo.urls')),
 
-    # url(r'^$', RedirectView.as_view(url='sphinx_demo/', permanent=False)),
-    # url(r'^sphinx_demo/', include('sphinx_demo.urls')),
+    url(r'^$', RedirectView.as_view(url='sphinx_demo/', permanent=False)),
+    url(r'^sphinx_demo/', include('sphinx_demo.urls', namespace='sphinx_demo')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
