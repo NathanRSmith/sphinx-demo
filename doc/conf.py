@@ -13,6 +13,21 @@
 
 import sys, os
 
+path = os.path.abspath(os.path.dirname(__file__))
+
+sys.path.insert(0,os.path.join(os.pardir, 'demo', 'demo'))
+sys.path.insert(0,os.path.join(os.pardir, 'sphinx_demo'))
+
+import settings
+from django.core.management import setup_environ
+
+setup_environ(settings)
+
+from django.core.management.commands.syncdb import Command as SyncdbCommand
+SyncdbCommand().execute(verbosity=0,database='default')
+
+autodoc_member_order = 'bysource'
+
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
