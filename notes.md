@@ -22,6 +22,7 @@ How CyberEye uses Sphinx:
 
 Cybereye is composed of many Django applications that are set up as individual installable Python packages.  Each (or most) of the applications have associated documentation in the "doc" directory of the package root.  All packages are collected in a "packages" directory so they are easy to find relative to each other.  In the packages directory I have a file called "packageList.py", which my fabfile uses to understand the capabilities for each package.
 
+```
 packages/
      fabfile.py
      packageList.py
@@ -35,10 +36,11 @@ packages/
           doc/
           setup.py
      ...
-          
+```
 
 Since most of these packages are Django apps they require a few extra lines for Sphinx to be able to load them correctly:
 
+```python
 import sys, os
 
 path = os.path.abspath(os.path.dirname(__file__))
@@ -59,7 +61,7 @@ from django.core.management.commands.syncdb import Command as SyncdbCommand
 SyncdbCommand().execute(verbosity=0,database='default')
 
 autodoc_member_order = 'bysource'
-
+```
 
 I have Fabric commands that go through each package that has documentation and builds it.  If it is being build on the server the results are moved to a central documentation location.
 
